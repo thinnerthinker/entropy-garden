@@ -4,6 +4,10 @@ import com.yallo.entropygarden.basement.AcidTrips;
 import com.yallo.entropygarden.basement.BasementAcidLeaf;
 import com.yallo.entropygarden.basement.BasementKush;
 import com.yallo.entropygarden.basement.BasementTight;
+import com.yallo.entropygarden.mobs.burrower.BurrowerActions;
+import com.yallo.entropygarden.mobs.burrower.BurrowerPosse;
+import com.yallo.entropygarden.mobs.sandworm.SandwormActions;
+import com.yallo.entropygarden.mobs.sandworm.SandwormEncounter;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
@@ -57,6 +61,13 @@ public class EntropyGarden implements ModInitializer {
 
 
         startServerTickEvents.add(new AcidTrips(basementAcidLeaf));
+        var burrowerActions = new BurrowerActions();
+        startServerTickEvents.add(new BurrowerPosse(burrowerActions));
+        startServerTickEvents.add(burrowerActions);
+
+        var sandwormActions = new SandwormActions();
+        startServerTickEvents.add(new SandwormEncounter(sandwormActions));
+        startServerTickEvents.add(sandwormActions);
 
         ServerTickEvents.START_SERVER_TICK.register(server -> {
             for (var e : startServerTickEvents) {
