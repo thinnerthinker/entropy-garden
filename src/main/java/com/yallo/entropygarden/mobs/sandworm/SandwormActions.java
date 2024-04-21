@@ -56,7 +56,7 @@ public class SandwormActions extends EntityActionEvent<SpiderEntity, SandwormSta
             double offsetZ = random.nextDouble() - 0.5;
             ((ServerWorld)entity.getWorld()).spawnParticles(particleEffect,
                     entity.getPos().x, entity.getPos().y, entity.getPos().z,
-                    100,
+                    10,
                     offsetX, offsetY, offsetZ,
                     1);
         }

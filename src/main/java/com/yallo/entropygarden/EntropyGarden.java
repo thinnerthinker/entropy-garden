@@ -52,11 +52,11 @@ public class EntropyGarden implements ModInitializer {
 
             for (var e : useItemEvents) {
                 if (e.onUseItem(itemStack, name, world, player)) {
-                    return TypedActionResult.pass(itemStack);
+                    return TypedActionResult.success(itemStack);
                 }
             }
 
-            return TypedActionResult.fail(itemStack);
+            return TypedActionResult.pass(itemStack);
         });
 
 

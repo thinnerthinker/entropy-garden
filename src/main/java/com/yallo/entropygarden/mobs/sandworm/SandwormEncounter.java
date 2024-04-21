@@ -21,6 +21,8 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -38,12 +40,14 @@ public class SandwormEncounter extends RandomEncounterEvent {
     @Override
     public boolean condition(PlayerEntity player, World world) {
         BlockPos playerPos = player.getBlockPos();
+        var biome = world.getBiome(playerPos);
 
         BlockPos blockBeneathPos = playerPos.down();
         BlockState blockBeneathState = world.getBlockState(blockBeneathPos);
 
-        return blockBeneathState.isOf(Blocks.SAND) || blockBeneathState.isOf(Blocks.CACTUS) ||
-                blockBeneathState.isOf(Blocks.AIR) || blockBeneathState.isOf(Blocks.SANDSTONE);
+        return biome.matchesKey(BiomeKeys.DESERT) && (blockBeneathState.isOf(Blocks.SAND) ||
+                blockBeneathState.isOf(Blocks.CACTUS) ||blockBeneathState.isOf(Blocks.AIR) ||
+                blockBeneathState.isOf(Blocks.SANDSTONE));
     }
 
     private BlockPos findRandomSurfacePosition(ServerWorld world, BlockPos center, int radius) {
