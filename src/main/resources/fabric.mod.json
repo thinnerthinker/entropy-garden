@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "entropy_garden",
+  "version": "1.0.0",
+  "name": "Entropy Garden",
+  "entrypoints": {
+    "main": [
+      "com.yallo.entropygarden.EntropyGarden"
+    ]
+  },
+"schemaVersion": 1,
+  "id": "entropy-garden",
+  "version": "${version}",
+  "name": "entropy-garden",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/g/entropy-garden"
+  },
+  "license": "All-Rights-Reserved",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.yallo.entropygarden.client.EntropyGardenClient"
+    ],
+    "main": [
+      "com.yallo.entropygarden.EntropyGarden"
+    ]
+  },
+  "mixins": [
+    "entropy-garden.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
